@@ -2,7 +2,7 @@
 "use client"
 import axios from 'axios'
 import { useState } from 'react'
-import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaBuilding, FaIdCard, FaBed, FaCalendar, FaMoneyCheck, FaMapMarkerAlt, FaRegCommentDots, FaLink } from 'react-icons/fa'
+import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaBed, FaCalendar, FaMoneyCheck, FaRegCommentDots, FaLink } from 'react-icons/fa'
 
 // Define type for form data
 interface FormData {
@@ -47,13 +47,16 @@ export default function AboutPage() {
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async () => {
     try {
         const response = await axios.post('http://3.111.218.67:3000/v1/auth/register', {
           ...formData
           // add more data if needed
         });
-        response.status === 201 && alert("successfully registered")
+        if(response.status === 201){
+          alert("successfully registered")
+        }
+        return; 
       } catch (error) {
         console.log(error);
       }
