@@ -49,14 +49,14 @@ export default function AboutPage() {
 
   const handleSubmit = async () => {
     try {
-        const response = await axios.post('http://3.111.218.67:3000/v1/auth/register', {
-          ...formData
-          // add more data if needed
-        });
-        if(response.status === 201){
-          alert("successfully registered")
-        }
-        return; 
+        // const response = await axios.post('http://3.111.218.67:3000/v1/auth/register', {
+        //   ...formData
+        //   // add more data if needed
+        // });
+        // if(response.status === 201){
+        //   alert("successfully registered")
+        // }
+        alert("successfully registered")
       } catch (error) {
         console.log(error);
       }
