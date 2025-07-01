@@ -3,7 +3,7 @@
 import axios from 'axios'
 // import axios from 'axios'
 import { useState } from 'react'
-import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaBed, FaCalendar, FaMoneyCheck, FaRegCommentDots, FaLink } from 'react-icons/fa'
+import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaBed, FaCalendar, FaMoneyCheck, FaRegCommentDots, FaLink, FaTimes, FaClock } from 'react-icons/fa'
 
 // Define type for form data
 interface FormData {
@@ -20,6 +20,7 @@ interface FormData {
   reference: string
   location: string
   comments: string
+  time: string
 }
 
 export default function BookAVisit() {
@@ -37,6 +38,7 @@ export default function BookAVisit() {
     reference: '',
     location: '',
     comments: '',
+    time:'',
   }
 
   const [status, setStatus] = useState('');
@@ -50,20 +52,20 @@ export default function BookAVisit() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('Sending...');
+    setStatus('Failed to send. Please try again');
 
-    try {
-      const res = await fetch('/api/send-visit-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    // try {
+    //   const res = await fetch('/api/send-visit-email', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(formData),
+    //   });
 
-      const result = await res.json();
-      setStatus(result.message);
-    } catch (err) {
-      setStatus('Failed to send. Please try again.');
-    }
+    //   const result = await res.json();
+    //   setStatus(result.message);
+    // } catch (err) {
+    //   setStatus('Failed to send. Please try again.');
+    // }
   };
 
   const handleReset = () => {
@@ -81,7 +83,7 @@ export default function BookAVisit() {
     <div className="py-16 px-5 max-w-7xl mx-auto space-y-10">
       {/* Registration Form */}
       <div className="bg-gray-100 p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-semibold text-center mb-6 text-black">Register Your Information</h2>
+        <h2 className="text-3xl font-semibold text-center mb-6 text-black">Register Your Information for A Visit</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
 
           {/* Name and Email on a single line */}
@@ -169,19 +171,22 @@ export default function BookAVisit() {
 
           {/* Profession */}
           <div className="mb-4">
-            <label htmlFor="profession" className="block text-sm font-medium text-gray-700">Profession</label>
-            <select
-              id="profession"
-              name="profession"
-              value={formData.profession}
-              onChange={handleChange}
-              required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select Profession</option>
-              <option value="student">Student</option>
-              <option value="professional">Professional</option>
-            </select>
+            <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+              Time
+            </label>
+            <div className="relative">
+              <FaClock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                id="time"
+                type="text"
+                name="time"
+                value={formData.time}
+                onChange={handleChange}
+                required
+                placeholder="Time"
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
+              />
+            </div>
           </div>
 
           {/* Conditionally Rendered Fields for Students */}
@@ -279,6 +284,7 @@ export default function BookAVisit() {
                 id="occupation"
                 type="date"
                 name="occupation"
+                required
                 value={formData.occupation}
                 onChange={handleChange}
                 min={disableYesterday()}  // Disable yesterday's date
@@ -288,27 +294,7 @@ export default function BookAVisit() {
           </div>
 
           {/* Approximate Duration of Stay */}
-          <div>
-            <label htmlFor="duration" className="block text-sm font-semibold text-gray-700 mb-2">
-              Approximate Duration of Booking
-            </label>
-            <div className="relative">
-              <FaBriefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <select
-                id="duration"
-                name="duration"
-                value={formData.duration}
-                onChange={handleChange}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
-              >
-                <option value="">Select Duration</option>
-                <option value="1 month">1 month</option>
-                <option value="3 months">3 months</option>
-                <option value="6 months">6 months</option>
-                <option value="12 months">12 months</option>
-              </select>
-            </div>
-          </div>
+          
 
           {/* Budget */}
         <div>
@@ -322,16 +308,41 @@ export default function BookAVisit() {
               name="budget"
               value={formData.budget}
               onChange={handleChange}
+              required
               className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
             >
               <option value="">Select Budget</option>
               <option value="5-7k">5-7k</option>
               <option value="7-10k">7-10k</option>
               <option value="10-15k">10-15k</option>
-              <option value="15k+">15k+</option>
+              <option value="15-30k">15-30k</option>
+              <option value="30-60k">30-60k</option>
             </select>
           </div>
         </div>
+
+        <div>
+            <label htmlFor="duration" className="block text-sm font-semibold text-gray-700 mb-2">
+              Approximate Duration of Booking
+            </label>
+            <div className="relative">
+              <FaBriefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <select
+                id="duration"
+                name="duration"
+                required
+                value={formData.duration}
+                onChange={handleChange}
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
+              >
+                <option value="">Select Duration</option>
+                <option value="1 month">1 month</option>
+                <option value="3 months">3 months</option>
+                <option value="6 months">6 months</option>
+                <option value="12 months">12 months</option>
+              </select>
+            </div>
+          </div>
 
           {/* Reference */}
           <div>
@@ -344,6 +355,7 @@ export default function BookAVisit() {
                 id="reference"
                 type="text"
                 name="reference"
+                required
                 value={formData.reference}
                 onChange={handleChange}
                 placeholder="Reference"
@@ -362,6 +374,7 @@ export default function BookAVisit() {
               <textarea
                 id="comments"
                 name="comments"
+                required
                 value={formData.comments}
                 onChange={handleChange}
                 placeholder="Comments"

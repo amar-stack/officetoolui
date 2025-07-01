@@ -44,14 +44,14 @@ const NavBar = () => {
           <Link href="/">Home</Link>
           <div className="group relative">
             <span className="cursor-pointer">Workspace ▾</span>
-            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2">
+            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2 min-w-[10rem]">
               <Link href="/" className="block px-4 py-2 hover:bg-gray-100">ISQ-JNR</Link>
               <Link href="/" className="block px-4 py-2 hover:bg-gray-100">ISQ-PDM</Link>
             </div>
           </div>
           <div className="group relative">
             <span className="cursor-pointer">Solutions ▾</span>
-            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2">
+            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2 min-w-[10rem]">
               <Link href="/" className="block px-4 py-2 hover:bg-gray-100">Private Office</Link>
               <Link href="/" className="block px-4 py-2 hover:bg-gray-100">Private Cabin</Link>
               <Link href="/" className="block px-4 py-2 hover:bg-gray-100">Meeting Room</Link>

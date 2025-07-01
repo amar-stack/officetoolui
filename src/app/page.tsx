@@ -6,7 +6,6 @@ import Head from 'next/head';
 
 const bannerImages = [
   '/floor-plan.png',
-  '/banner.jpg',
 ];
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -37,7 +36,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Flexible Workspace in Bangalore</h1>
             <p className="text-lg md:text-xl mb-6">Book a private office, meeting room, or retail cubical</p>
             <Link href="/bookavisit" className="inline-block bg-white text-black font-semibold px-6 py-3 rounded-md hover:bg-gray-200 transition">
-              Book a Visit
+              Enquire
             </Link>
           </div>
         </section>
@@ -51,13 +50,13 @@ export default function Home() {
             
 
             <h3 className="text-xl font-semibold mb-2">ISQ-JNR</h3>
-            <p className="mb-4">Jayanagar location with private cabins and retail cubicles.</p>
+            <p className="mb-4">Jayanagar location with private cabins and plug and play options.</p>
             <Link href="/" className="text-blue-600 hover:underline">Explore ISQ-JNR</Link>
           </div>
           <div className="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
             <Image src="/isq-pdm.jpeg" alt="ISQ-PDM workspace" width={800} height={500} className="rounded-lg mb-4" />
             <h3 className="text-xl font-semibold mb-2">ISQ-PDM</h3>
-            <p className="mb-4">Padmanabhanagar workspace with modern amenities and flexible rooms.</p>
+            <p className="mb-4">Padmanabhanagar workspace with retail cubicles and flexible rooms.</p>
             <Link href="/workspace/isq-pdm" className="text-blue-600 hover:underline">Explore ISQ-PDM</Link>
           </div>
         </div>
@@ -67,11 +66,12 @@ export default function Home() {
       <section className="bg-gray-50 py-12 px-4">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Visit Us Today</h2>
-            <p className="mb-6">#156, 27th Cross, 350 meters from Jayanagar Metro Station, 6th Block Jayanagar, Bangalore-560070</p>
+            <h2 className="text-2xl font-semibold mb-4">Visit Us</h2>
+            <p className="mb-6">#156, 27th Cross, 6th Block Jayanagar, Bangalore-560070 <br/>
+            <span className='font-bold'>less than 100 meters from Jayanagar Metro Station</span></p>
             <div className="space-y-2">
-              <a href="tel:+919901307850" className="block text-black underline">Call: +91 99013 07850</a>
-              <a href="mailto:hello@instasquares.in" className="block text-black underline">Email: hello@instasquares.in</a>
+              <a href="tel:+919901307850" className="block text-black ">Call: +91 99013 07850</a>
+              <a href="mailto:hello@instasquares.in" className="block text-black ">Email: mail@instasquares.in</a>
               <a
                 href="https://maps.app.goo.gl/oT6HjkFbqNKGyWda8"
                 target="_blank"
