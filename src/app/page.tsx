@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Head from 'next/head';
+// import Head from 'next/head';
 
 const bannerImages = [
   '/floor-plan.png',
@@ -86,7 +86,6 @@ export default function Home() {
           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15554.545486142173!2d77.578815!3d12.931077!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae159a22df6a33%3A0x31eb07bafafd6199!2sInstaSquare!5e0!3m2!1sen!2sin!4v1751283051903!5m2!1sen!2sin" 
             width="100%" 
             height="450" 
-            allowFullScreen="" 
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade"
           />

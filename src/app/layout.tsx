@@ -1,8 +1,8 @@
 // app/layout.tsx
 import './globals.css'
-import Logo from './components/Logo'
+// import Logo from './components/Logo'
 import NavBar from './components/NavBar'
-import Footer from './components/Footer'
+// import Footer from './components/Footer'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

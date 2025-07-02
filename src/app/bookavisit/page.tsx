@@ -1,9 +1,8 @@
 // app/about/page.tsx
 "use client"
-import axios from 'axios'
 // import axios from 'axios'
 import { useState } from 'react'
-import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaBed, FaCalendar, FaMoneyCheck, FaRegCommentDots, FaLink, FaTimes, FaClock } from 'react-icons/fa'
+import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaCalendar, FaMoneyCheck, FaRegCommentDots, FaLink, FaClock } from 'react-icons/fa'
 
 // Define type for form data
 interface FormData {
